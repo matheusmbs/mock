@@ -19,9 +19,12 @@ export class MidiasController {
     @Post('/')
     @UseInterceptors(FilesInterceptor('anexos[]'))
     inserirMidias(@UploadedFiles() midias) {
-        midias.forEach(midia =>
+        
+        midias.forEach(midia =>{
+            // tslint:disable-next-line: no-console
+            console.log(midia);
             this.midiasService.adicionarMidia(midia, this.midias)
-        );
+        });
 
         return this.midias;
     }
